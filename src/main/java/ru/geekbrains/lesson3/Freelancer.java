@@ -8,12 +8,12 @@ public class Freelancer extends Employee {
     private Double hoursWorked;
 
 
-    public Freelancer(String name, String surName, BigDecimal salary) {
-        this(name, surName, salary, 0d);
+    public Freelancer(String name, String surName, BigDecimal salary, int age) {
+        this(name, surName, salary, 0d, age);
     }
 
-    public Freelancer(String name, String surName, BigDecimal salary, Double hoursWorked) {
-        super(name, surName, salary);
+    public Freelancer(String name, String surName, BigDecimal salary, Double hoursWorked, int age) {
+        super(name, surName, salary, age);
         this.hoursWorked = hoursWorked;
     }
 
@@ -24,8 +24,8 @@ public class Freelancer extends Employee {
 
     @Override
     public String toString() {
-        return String.format("%s %s. Фрилансер. Среднемесячная зарплата (почасовая): %s (руб.) за %.1f отработанных часов по ставке %s (руб.)."
-                            , surName, name, calculateSalary().setScale(2, RoundingMode.HALF_UP).toString(), hoursWorked, salary.setScale(0, RoundingMode.HALF_UP).toString());
+        return String.format("%s %s.  Возраст: %d лет. Фрилансер. Среднемесячная зарплата (почасовая): %s (руб.) за %.1f отработанных часов по ставке %s (руб.)."
+                            , surName, name, age, calculateSalary().setScale(2, RoundingMode.HALF_UP).toString(), hoursWorked, salary.setScale(0, RoundingMode.HALF_UP).toString());
     }
 
     @Override

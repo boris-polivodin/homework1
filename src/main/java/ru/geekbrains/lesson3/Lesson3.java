@@ -17,14 +17,16 @@ public class Lesson3 {
     private static Worker generateWorker() {
         return new Worker(names[rnd.nextInt(names.length)]
                             , surNames[rnd.nextInt(surNames.length)]
-                            , new BigDecimal(rnd.nextDouble(50000, 150000)));
+                            , new BigDecimal(rnd.nextDouble(50000, 150000))
+                            , rnd.nextInt(18, 65));
     }
 
     private static Freelancer generateFreelancer() {
         return new Freelancer(names[rnd.nextInt(names.length)]
                             , surNames[rnd.nextInt(surNames.length)]
                             , new BigDecimal(rnd.nextDouble(2000, 3000))
-                            , rnd.nextDouble(100d));
+                            , rnd.nextDouble(100d)
+                            , rnd.nextInt(18, 65));
     }
 
     private static ArrayList<Employee> generateEmployees(int length) {
@@ -67,6 +69,13 @@ public class Lesson3 {
             System.out.println(employee);
         }
 
+        System.out.println();
+
+        Arrays.sort(arrEmployees, new EmployeeComparator(TypeSorting.INCREASE, "age"));
+
+        for (Employee employee : arrEmployees) {
+            System.out.println(employee);
+        }
         
 
     }

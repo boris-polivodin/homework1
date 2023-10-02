@@ -5,8 +5,8 @@ import java.math.RoundingMode;
 
 public class Worker extends Employee{
 
-    public Worker(String name, String surName, BigDecimal salary) {
-        super(name, surName, salary);
+    public Worker(String name, String surName, BigDecimal salary, int age) {
+        super(name, surName, salary, age);
     }
 
     @Override
@@ -16,8 +16,8 @@ public class Worker extends Employee{
 
     @Override
     public String toString() {
-        return String.format("%s %s. Рабочий. Среднемесячная зарплата (фиксированная): %s (руб.)"
-                            , surName, name, calculateSalary().setScale(2, RoundingMode.HALF_UP).toString());
+        return String.format("%s %s. Возраст: %d лет. Рабочий. Среднемесячная зарплата (фиксированная): %s (руб.)"
+                            , surName, name, age, calculateSalary().setScale(2, RoundingMode.HALF_UP).toString());
     }
 
     @Override

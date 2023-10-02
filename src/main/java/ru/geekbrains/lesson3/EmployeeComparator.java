@@ -18,6 +18,8 @@ public class EmployeeComparator implements Comparator<Employee> {
             return sortingSurNames(o1, o2);
         } else if (fieldSorting.equals("salary")) {
             return sortingSalary(o1, o2);
+        } else if (fieldSorting.equals("age")) {
+            return sortingAge(o1, o2);
         } else {
             return o1.compareTo(o2);
         }
@@ -44,6 +46,14 @@ public class EmployeeComparator implements Comparator<Employee> {
             return o1.calculateSalary().compareTo(o2.calculateSalary());
         } else {
             return o2.calculateSalary().compareTo(o1.calculateSalary());
+        }   
+    }
+
+    private int sortingAge(Employee o1, Employee o2) {
+        if (typeSorting.equals(TypeSorting.INCREASE)) {
+            return Integer.compare(o1.age, o2.age);
+        } else {
+            return Integer.compare(o2.age, o1.age);
         }   
     }
     
