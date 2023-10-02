@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
  */
 public class MainClass {
-    public static void main(String[] args) {
+    public static void launchLesson2(String[] args) {
         Cat cat1 = new Cat("Barsik", 15);
         Cat cat2 = new Cat("Marsik", 10);
         Cat cat3 = new Cat("Perchik", 17);

@@ -1,13 +1,7 @@
-package ru.geekbrains;
+package ru.geekbrains.lesson1;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
-import ru.geekbrains.lesson1.Colors;
-import ru.geekbrains.lesson1.MilkBottle;
-import ru.geekbrains.lesson1.Product;
-import ru.geekbrains.lesson1.Tea;
-import ru.geekbrains.lesson1.VendingMachine;
 
 public final class App {
     private App() {
