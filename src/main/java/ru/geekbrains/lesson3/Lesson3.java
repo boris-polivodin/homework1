@@ -49,7 +49,7 @@ public class Lesson3 {
         return employees;
     }
 
-    public static void main(String[] args) {
+    public static void launchLesson3(String[] args) {
 
         ArrayList<Employee> employees = generateEmployees(10);
 
@@ -71,7 +71,7 @@ public class Lesson3 {
 
         System.out.println();
 
-        Arrays.sort(arrEmployees, new EmployeeComparator(TypeSorting.INCREASE, "age"));
+        Arrays.sort(arrEmployees, new EmployeeComparator(TypeSorting.DECREASE, "age"));
 
         for (Employee employee : arrEmployees) {
             System.out.println(employee);
