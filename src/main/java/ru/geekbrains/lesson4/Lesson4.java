@@ -40,8 +40,8 @@ public class Lesson4 {
             System.out.println("Количество апельсинов в коробке после пересыпания: " + orangeBox2.getFruits().size());
         } else System.out.println("Коробка пустая");
         
-        orangeBox1.add(new Orange());
-        orangeBox1.add(new Orange());
+        // orangeBox1.add(new Orange());
+        // orangeBox1.add(new Orange());
         System.out.println("Вес первой коробки с апельсинами после добавления: " + orangeBox1.getWeight());
         System.out.println("Вес второй коробки с апельсинами: " + orangeBox2.getWeight());
 
@@ -69,6 +69,8 @@ public class Lesson4 {
         if (appleBox1.remove()) {
             System.out.println("Взяли еще одно яблоко");
         } else System.out.println("Коробка пустая");
+
+        System.out.println("Пустые коробки равны: " + appleBox1.compare(orangeBox1));
 
     }
 

@@ -11,7 +11,7 @@ public class Box<T extends Fruit> {
     }
 
     public float getWeight() {
-        return fruits.size() * fruits.get(0).getWeight();
+        return fruits.size() == 0 ? 0 : fruits.size() * fruits.get(0).getWeight();
     }
 
     public ArrayList<T> getFruits() {
@@ -19,7 +19,7 @@ public class Box<T extends Fruit> {
     }
 
     public boolean compare(Box o) {  // (Box<T> o)
-        return fruits.size() * fruits.get(0).getWeight() == o.getWeight();
+        return (fruits.size() == 0 ? 0 : fruits.size() * fruits.get(0).getWeight()) == o.getWeight();
     }
 
     public void add(T e) {
