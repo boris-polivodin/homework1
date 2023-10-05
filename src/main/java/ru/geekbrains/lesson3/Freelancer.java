@@ -30,7 +30,6 @@ public class Freelancer extends Employee {
 
     @Override
     public int compareTo(Employee o) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 

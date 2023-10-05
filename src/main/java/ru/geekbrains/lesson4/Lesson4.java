@@ -54,6 +54,22 @@ public class Lesson4 {
         appleBox1.remove();
         System.out.println("Коробки с яблоками и апельсинами равны: " + appleBox1.compare(orangeBox1));
 
+        if (appleBox1.remove()) {
+            System.out.println("Взяли еще одно яблоко");
+        } else System.out.println("Коробка пустая");
+
+        if (appleBox1.remove()) {
+            System.out.println("Взяли еще одно яблоко");
+        } else System.out.println("Коробка пустая");
+
+        if (appleBox1.remove()) {
+            System.out.println("Взяли еще одно яблоко");
+        } else System.out.println("Коробка пустая");
+        
+        if (appleBox1.remove()) {
+            System.out.println("Взяли еще одно яблоко");
+        } else System.out.println("Коробка пустая");
+
     }
 
     private static Box<Apple> fillAppleBox() {
