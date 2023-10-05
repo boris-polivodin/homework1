@@ -5,15 +5,13 @@ import java.util.ArrayList;
 public class Box<T extends Fruit> {
 
     private ArrayList<T> fruits;
-    private T fruit;
     
-    public Box(ArrayList<T> fruits, T fruit) {
+    public Box(ArrayList<T> fruits) {
         this.fruits = fruits;
-        this.fruit = fruit;
     }
 
     public float getWeight() {
-        return fruits.size() * fruit.getWeight();
+        return fruits.size() * fruits.get(0).getWeight();
     }
 
     public ArrayList<T> getFruits() {
@@ -21,7 +19,7 @@ public class Box<T extends Fruit> {
     }
 
     public boolean compare(Box o) {  // (Box<T> o)
-        return this.getWeight() == o.getWeight();
+        return fruits.size() * fruits.get(0).getWeight() == o.getWeight();
     }
 
     public void add(T e) {

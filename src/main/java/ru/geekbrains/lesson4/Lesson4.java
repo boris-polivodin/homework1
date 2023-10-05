@@ -65,7 +65,7 @@ public class Lesson4 {
         if (appleBox1.remove()) {
             System.out.println("Взяли еще одно яблоко");
         } else System.out.println("Коробка пустая");
-        
+
         if (appleBox1.remove()) {
             System.out.println("Взяли еще одно яблоко");
         } else System.out.println("Коробка пустая");
@@ -79,7 +79,7 @@ public class Lesson4 {
             apples.add(new Apple());
         }
 
-        return new Box<Apple>(apples, apples.get(0));
+        return new Box<Apple>(apples);
 
     }
 
@@ -90,7 +90,7 @@ public class Lesson4 {
             oranges.add(new Orange());
         }
 
-        return new Box<Orange>(oranges, oranges.get(0));
+        return new Box<Orange>(oranges);
 
     }
 }
