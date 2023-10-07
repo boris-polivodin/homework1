@@ -58,18 +58,24 @@ public class TableModel implements Model {
      * @param name Имя
      */
     @Override
-    public boolean deleteReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+    public boolean deleteReservationTable(int oldReservation){
         for (Table table : loadTables()) {
-            if (table.getNo() == tableNo) {
-                Collection<Reservation> reservations = table.getReservations();
-                for (Reservation reservation : reservations) {
-                    if (reservation.getId() == oldReservation) {
-                        return reservations.remove(reservation);
-                    }
+            Collection<Reservation> reservations = table.getReservations();
+            for (Reservation reservation : reservations) {
+                if (reservation.getId() == oldReservation) {
+                    return reservations.remove(reservation);
                 }
             }
         }
         return false;
+    }
+
+    @Override
+    public int changeReservationTable(int idReservation, Date reservationDate, int tableNo, String name) {
+        if (deleteReservationTable(idReservation)) {
+            return reservationTable(reservationDate, tableNo, name);
+        }
+        return -1;
     }
 
 }

@@ -6,6 +6,7 @@ public interface ViewObserver {
 
     void onReservationTable(Date orderDate, int tableNo, String name);
 
-    void onDeleteReservationTable(int idReservation, Date orderDate, int tableNo, String name);
+    void onDeleteReservationTable(int idReservation, int tableNo);
+    void onChangeReservationTable(int idReservation, Date orderDate, int tableNo, String name);
 
 }

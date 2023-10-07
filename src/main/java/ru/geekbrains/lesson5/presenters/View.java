@@ -47,6 +47,7 @@ public interface View {
      * @param tableNo номер столика
      * @param name Имя
      */
-    void deleteReservationTable(int idReservation, Date orderDate, int tableNo, String name);
+    void deleteReservationTable(int idReservation, int tableNo);
+    void changeReservationTable(int idReservation, Date orderDate, int tableNo, String name);
 
 }

@@ -65,9 +65,14 @@ public class BookingView implements View {
      * @param tableNo номер столика
      * @param name Имя
      */
-    public void deleteReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+    public void deleteReservationTable(int oldReservation, int tableNo){
         if (observer != null)
-            observer.onDeleteReservationTable(oldReservation, reservationDate, tableNo, name);
+            observer.onDeleteReservationTable(oldReservation,  tableNo);
+    }
+
+    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+        if (observer != null)
+            observer.onChangeReservationTable(oldReservation, reservationDate, tableNo, name);
     }
 
     @Override

@@ -62,8 +62,6 @@ public class BookingPresenter implements ViewObserver {
             updateUIShowReservationTableResult(tableNo, -1);
         }
 
-
-
     }
 
     /**
@@ -74,10 +72,22 @@ public class BookingPresenter implements ViewObserver {
      * @param name Имя
      */
     @Override
-    public void onDeleteReservationTable(int idReservation, Date orderDate, int tableNo, String name) {
+    public void onDeleteReservationTable(int idReservation, int tableNo) {
 
-            boolean result = model.deleteReservationTable(idReservation, orderDate, tableNo, name);
+            boolean result = model.deleteReservationTable(idReservation);
             updateUIDeleteReservationTableResult(tableNo, result);
  
     }
+
+    @Override
+    public void onChangeReservationTable(int idReservation, Date orderDate, int tableNo, String name) {
+        try {
+            int reservationNo = model.changeReservationTable(idReservation, orderDate, tableNo, name);
+            updateUIShowReservationTableResult(tableNo, reservationNo);
+        }
+        catch (RuntimeException e){
+            updateUIShowReservationTableResult(tableNo, -1);
+        }
+    }
+
 }
