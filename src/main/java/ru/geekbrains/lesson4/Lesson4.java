@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class Lesson4 {
     
-    public static void main(String[] args) {
+    public void launchLesson4() {
         
         Box<Apple> appleBox1 = fillAppleBox();
         Box<Apple> appleBox2 = fillAppleBox();
@@ -74,7 +74,7 @@ public class Lesson4 {
 
     }
 
-    private static Box<Apple> fillAppleBox() {
+    private Box<Apple> fillAppleBox() {
 
         ArrayList<Apple> apples = new ArrayList<>();
         for (int index = 0; index < 10; index++) {
@@ -85,7 +85,7 @@ public class Lesson4 {
 
     }
 
-    private static Box<Orange> fillOrangeBox() {
+    private Box<Orange> fillOrangeBox() {
 
         ArrayList<Orange> oranges = new ArrayList<>();
         for (int index = 0; index < 10; index++) {
