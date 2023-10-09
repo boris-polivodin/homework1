@@ -74,7 +74,7 @@ public class BookingPresenter implements ViewObserver {
     @Override
     public void onDeleteReservationTable(int idReservation, int tableNo) {
 
-            boolean result = model.deleteReservationTable(idReservation);
+            boolean result = model.deleteReservationTable(idReservation, tableNo);
             updateUIDeleteReservationTableResult(tableNo, result);
  
     }
@@ -86,7 +86,7 @@ public class BookingPresenter implements ViewObserver {
             updateUIShowReservationTableResult(tableNo, reservationNo);
         }
         catch (RuntimeException e){
-            updateUIShowReservationTableResult(tableNo, -1);
+            updateUIShowReservationTableResult(tableNo, -2);
         }
     }
 

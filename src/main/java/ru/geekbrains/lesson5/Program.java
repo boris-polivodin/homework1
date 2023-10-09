@@ -31,12 +31,12 @@ public class Program {
         System.out.println();
         System.out.println("// Отмена бронирования");
         view.deleteReservationTable(1001, 1);
-        // view.deleteReservationTable(1003, 4);
+        view.deleteReservationTable(1003, 4);
         view.deleteReservationTable(1003, 3);
 
         System.out.println();
-        System.out.println("// Изменение бронирования с 2 на 5 столик");
-        view.changeReservationTable(1002, new Date(), 5, "Станислав");
+        System.out.println("// Изменение бронирования 2 столика на другое время");
+        view.changeReservationTable(1002, new Date(), 2, "Станислав");
 
         System.out.println();
         view.reservationTable(new Date(), 3, "Станислав");
