@@ -8,16 +8,6 @@ public class SaveToFile {
     private String fileName;
     private Order order;
 
-    public SaveToFile() {}
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     public SaveToFile(Order order, String fileName) {
         this.order = order;
         this.fileName = fileName;

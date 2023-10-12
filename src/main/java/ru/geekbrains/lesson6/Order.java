@@ -1,9 +1,5 @@
 package ru.geekbrains.lesson6;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
-
 public class Order {
 
     private String clientName;
