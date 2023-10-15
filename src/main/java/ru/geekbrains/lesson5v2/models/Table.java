@@ -15,7 +15,7 @@ public class Table {
         no = ++counter;
     }
 
-    private final Collection<ru.geekbrains.lesson5v2.models.Reservation> reservations = new ArrayList<>();
+    private final Collection<Reservation> reservations = new ArrayList<>();
 
     public Collection<Reservation> getReservations() {
         return reservations;
