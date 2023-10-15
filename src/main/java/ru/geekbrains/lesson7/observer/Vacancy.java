@@ -20,10 +20,6 @@ public class Vacancy {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public int getSalary() {
         return salary;
     }

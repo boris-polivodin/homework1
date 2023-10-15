@@ -1,11 +1,8 @@
 package ru.geekbrains.lesson7.observer;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Company implements CompanyActions{
-
-    private Random random = new Random();
 
     private String name;
 
@@ -41,9 +38,8 @@ public class Company implements CompanyActions{
 
     @Override
     public void needEmployee(){
-        for (int i = 0; i < vacancies.size(); i++) {
+        for (int i = 0; i < vacancies.size(); i++)
             jobAgency.sendOffer(name, vacancies.get(i));
-        }
 
     }
 

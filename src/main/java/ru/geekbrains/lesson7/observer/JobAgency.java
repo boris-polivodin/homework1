@@ -1,6 +1,5 @@
 package ru.geekbrains.lesson7.observer;
 
-import ru.geekbrains.lesson5v2.models.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
