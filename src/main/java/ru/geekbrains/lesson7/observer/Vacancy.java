@@ -34,12 +34,11 @@ public class Vacancy {
 
     @Override
     public String toString() {
-        return "{" +
-                "vacancyType=" + vacancyType +
+        return  "type=" + vacancyType +
                 ", company=" + company.getCompanyName() +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", salary=" + salary +
-                "}\n";
+                "\n";
     }
 }

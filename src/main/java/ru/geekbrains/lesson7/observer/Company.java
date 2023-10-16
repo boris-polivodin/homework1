@@ -12,6 +12,7 @@ public class Company implements CompanyActions{
 
     private ArrayList<Vacancy> vacancies;
 
+    @Override
     public void setVacancies(ArrayList<Vacancy> vacancies) {
         this.vacancies = vacancies;
     }
@@ -26,6 +27,7 @@ public class Company implements CompanyActions{
         return name;
     }
 
+    @Override
     public int getMaxSalary() {
         return maxSalary;
     }

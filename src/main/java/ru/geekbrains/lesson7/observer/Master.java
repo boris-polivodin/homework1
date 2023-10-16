@@ -16,7 +16,7 @@ public class Master implements Observer{
 
     @Override
     public String toString() {
-        return "name='" + name + '\'';
+        return name;
     }
 
     @Override

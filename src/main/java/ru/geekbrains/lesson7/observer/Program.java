@@ -19,21 +19,18 @@ public class Program {
 
     public static void main(String[] args) {
         Publisher jobAgency = new JobAgency();
-        Company google = new Company("Google", jobAgency, 120000);
-        Company yandex = new Company("Yandex", jobAgency, 95000);
-        Company geekBrains = new Company("GeekBrains", jobAgency, 98000);
+        CompanyActions google = new Company("Google", jobAgency, 120000);
+        CompanyActions yandex = new Company("Yandex", jobAgency, 95000);
+        CompanyActions geekBrains = new Company("GeekBrains", jobAgency, 98000);
 
         google.setVacancies(getVacancies(google, 3));
         yandex.setVacancies(getVacancies(yandex, 4));
         geekBrains.setVacancies(getVacancies(geekBrains, 5));
 
         System.out.println("Вакансии компаний до: ");
-        System.out.println(google.getCompanyName());
-        System.out.println(Arrays.deepToString(google.getVacanciesList().toArray(new Vacancy[0])));
-        System.out.println(yandex.getCompanyName());
-        System.out.println(Arrays.deepToString(yandex.getVacanciesList().toArray(new Vacancy[0])));
-        System.out.println(geekBrains.getCompanyName());
-        System.out.println(Arrays.deepToString(geekBrains.getVacanciesList().toArray(new Vacancy[0])));
+        displayVacancies(google);
+        displayVacancies(yandex);
+        displayVacancies(geekBrains);
 
         Student student1 = new Student("Студент #1", new ArrayList<>(Arrays.asList(VacancyType.manager, VacancyType.worker, VacancyType.sysadmin)));
         Manager manager1 = new Manager("Менеджер #1", new ArrayList<>(List.of(VacancyType.manager)));
@@ -50,19 +47,16 @@ public class Program {
         geekBrains.needEmployee();
 
         System.out.println("Вакансии компаний после: ");
-        System.out.println(google.getCompanyName());
-        System.out.println(Arrays.deepToString(google.getVacanciesList().toArray(new Vacancy[0])));
-        System.out.println(yandex.getCompanyName());
-        System.out.println(Arrays.deepToString(yandex.getVacanciesList().toArray(new Vacancy[0])));
-        System.out.println(geekBrains.getCompanyName());
-        System.out.println(Arrays.deepToString(geekBrains.getVacanciesList().toArray(new Vacancy[0])));
+        displayVacancies(google);
+        displayVacancies(yandex);
+        displayVacancies(geekBrains);
 
         System.out.println("Клиенты агентства после: ");
         System.out.println(Arrays.deepToString(jobAgency.getObserversList().toArray(new Observer[0])));
 
     }
 
-    static ArrayList<Vacancy> getVacancies(Company company, int count) {
+    static ArrayList<Vacancy> getVacancies(CompanyActions company, int count) {
         ArrayList<Vacancy> vacancies = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             vacancies.add(generateVacancy(company));
@@ -70,12 +64,12 @@ public class Program {
         return vacancies;
     }
 
-    static Vacancy generateVacancy(Company company) {
+    static Vacancy generateVacancy(CompanyActions company) {
         int typeIndex = random.nextInt(VacancyType.values().length);
         return generateVacancy(VacancyType.values()[typeIndex], company, random.nextInt(company.getMaxSalary()));
     }
 
-    static Vacancy generateVacancy(VacancyType vacancyType, Company company, int salary) {
+    static Vacancy generateVacancy(VacancyType vacancyType, CompanyActions company, int salary) {
         return switch (vacancyType) {
             case sysadmin -> new Vacancy(vacancyType, company, "Системный администратор", "Поддержка корпоративной сети", salary);
             case engineer -> new Vacancy(vacancyType, company, "Инженер-программист", "Начальник отдела разработки ПО", salary);
@@ -85,4 +79,8 @@ public class Program {
         };
     }
 
+    static void displayVacancies(CompanyActions company) {
+        System.out.println(company.getCompanyName());
+        System.out.println(Arrays.deepToString(company.getVacanciesList().toArray(new Vacancy[0])));
+    }
 }
