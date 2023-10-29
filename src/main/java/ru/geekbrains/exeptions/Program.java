@@ -1,5 +1,6 @@
 package ru.geekbrains.exeptions;
 
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
@@ -11,13 +12,21 @@ public class Program {
 
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
         map.put("surname", "");
+        map.put("firstName", "");
+        map.put("secondName", "");
         map.put("birthday", "");
         map.put("telephone", "");
         map.put("sex", "");
 
         Parser.parsing(map, line);
 
-        FileProcessor.writeFile(map);
+
+        try {
+            FileProcessor.writeFile(map);
+            System.out.println("Записан файл " + map.get("surname") + ".txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

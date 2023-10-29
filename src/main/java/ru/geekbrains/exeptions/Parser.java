@@ -4,20 +4,22 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 public class Parser {
+
+    private static final int COUNT_WORDS = 6;
 
     static void parsing(LinkedHashMap<String, String> map, String line) {
 
         String[] arr = line.split(" ");
-        if (arr.length != 4) throw new MyArraySizeExeption(arr.length);
+        if (arr.length != COUNT_WORDS) throw new MyArraySizeExeption(arr.length, COUNT_WORDS);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
         boolean isExeption;
         boolean isTelephone;
         boolean isDate;
-        boolean isSurname;
+        boolean isName;
         boolean isSex;
 
         for (String item : arr) {
@@ -25,13 +27,13 @@ public class Parser {
             isExeption = false;
             isTelephone = false;
             isDate = false;
-            isSurname = false;
+            isName = false;
             isSex = false;
 
             try {
-                long num = Long.parseLong(item);
+                Long.parseLong(item);
                 isTelephone = true;
-            } catch (IllegalArgumentException e) {
+            } catch (NumberFormatException e) {
                 System.out.printf("%s - не число\n", item);
 
                 try {
@@ -47,10 +49,13 @@ public class Parser {
             }
 
             if (isExeption) {
+                if (!Pattern.matches("[a-zA-Zа-яёА-ЯЁ]+", item)) {
+                    throw new RuntimeException(String.format("Некорректный формат введенных данных - %s\n", item));
+                }
                 if (item.length() == 1 && (item.equals("f") || item.equals("m"))) {
                     isSex = true;
                 } else {
-                    isSurname = true;
+                    isName = true;
                 }
             }
 
@@ -58,26 +63,29 @@ public class Parser {
                 map.put("birthday", item);
             } else if (isSex && map.get("sex").isEmpty()) {
                 map.put("sex", item);
-            } else if (isSurname && map.get("surname").isEmpty()) {
+            } else if (isName && map.get("surname").isEmpty()) {
                 map.put("surname", item);
+            } else if (isName && map.get("firstName").isEmpty()) {
+                map.put("firstName", item);
+            } else if (isName && map.get("secondName").isEmpty()) {
+                map.put("secondName", item);
             } else if (isTelephone && map.get("telephone").isEmpty()) {
                 map.put("telephone", item);
             } else {
                 throw new RuntimeException(String.format("Некорректный формат введенных данных - %s\n", item));
             }
-
-
         }
+
     }
 }
 
 class MyArraySizeExeption extends RuntimeException {
-    public MyArraySizeExeption() {
-        super("Количество данных должно быть равным 4");
+    public MyArraySizeExeption(int validSize) {
+        super(String.format("Количество данных должно быть равным %d.", validSize));
     }
 
-    public MyArraySizeExeption(int size) {
-        super(String.format("Количество данных должно быть равным 4. Вы ввели %d типа(-ов)", size));
+    public MyArraySizeExeption(int size, int validSize) {
+        super(String.format("Количество данных должно быть равным %d. Вы ввели %d", validSize, size));
     }
 }
 

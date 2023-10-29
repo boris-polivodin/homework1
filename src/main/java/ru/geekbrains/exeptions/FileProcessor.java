@@ -22,11 +22,12 @@ class FileProcessor {
         }
     }
 
-    static void writeFile(LinkedHashMap<String, String> map) {
+    static void writeFile(LinkedHashMap<String, String> map) throws IOException{
 
+        if (map.get("surname").isEmpty())
+            throw new RuntimeException("Нет данных для записи в файл.");
         StringBuilder sb = new StringBuilder();
-        String name = "text.txt";
-        if (map.containsKey("surname")) name = map.get("surname") + ".txt";
+        String name = map.get("surname") + ".txt";
         // <Фамилия><Имя><Отчество><датарождения> <номертелефона><пол>
         for (String key : map.keySet()) {
             sb.append("<").append(map.get(key)).append(">");
@@ -35,10 +36,6 @@ class FileProcessor {
         try (FileWriter fw = new FileWriter(name, true)) {
             fw.write(sb.toString());
             fw.write("\n");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
