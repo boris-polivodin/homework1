@@ -20,7 +20,7 @@ public class Parser {
         boolean isTelephone;
         boolean isDate;
         boolean isName;
-        boolean isSex;
+        boolean isGender;
 
         for (String item : arr) {
 
@@ -28,7 +28,7 @@ public class Parser {
             isTelephone = false;
             isDate = false;
             isName = false;
-            isSex = false;
+            isGender = false;
 
             try {
                 Long.parseLong(item);
@@ -53,7 +53,7 @@ public class Parser {
                     throw new RuntimeException(String.format("Некорректный формат введенных данных - %s\n", item));
                 }
                 if (item.length() == 1 && (item.equals("f") || item.equals("m"))) {
-                    isSex = true;
+                    isGender = true;
                 } else {
                     isName = true;
                 }
@@ -61,7 +61,7 @@ public class Parser {
 
             if (isDate && map.get("birthday").isEmpty()) {
                 map.put("birthday", item);
-            } else if (isSex && map.get("sex").isEmpty()) {
+            } else if (isGender && map.get("sex").isEmpty()) {
                 map.put("sex", item);
             } else if (isName && map.get("surname").isEmpty()) {
                 map.put("surname", item);
